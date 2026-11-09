@@ -1,0 +1,4 @@
+flask==3.0.0
+cassandra-driver==3.29.0
+python-dotenv==1.0.0
+gunicorn==21.2.0
