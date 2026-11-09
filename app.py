@@ -28,17 +28,7 @@ def get_session():
         auth_provider = PlainTextAuthProvider(ASTRA_DB_CLIENT_ID, ASTRA_DB_CLIENT_SECRET)
         _cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
         _session = _cluster.connect()
-        _session.execute(
-            f"CREATE KEYSPACE IF NOT EXISTS {ASTRA_DB_KEYSPACE} "
-            "WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}"
-        )
         _session.set_keyspace(ASTRA_DB_KEYSPACE)
-        _session.execute(
-            "CREATE TABLE IF NOT EXISTS usuarios ("
-            "id UUID PRIMARY KEY, "
-            "nombre text, "
-            "fecha timestamp)"
-        )
     return _session
 
 
